@@ -1,4 +1,4 @@
-# Iron-fan Eucalyptus
+# Ironfan Eucalyptus
 
 This branch provides Ironfan's compatibility with eucalyptus/OpenStack's EC2 API. Ironfan is built for AWS and uses advanced features like ELB and IAM which aren't supported in eucalyptus/OpenStack making it hard to be used for them.
  
