@@ -5,7 +5,7 @@ module Ironfan
       self.handle = :ec2
 
       def self.resources
-        [ Machine, ElasticIp, EbsVolume, Keypair, SecurityGroup, IamServerCertificate, ElasticLoadBalancer ]
+        [ Machine, ElasticIp, EbsVolume, Keypair, SecurityGroup ]
       end
 
       #
@@ -13,16 +13,6 @@ module Ironfan
       #
       def self.connection
         @@connection ||= Fog::Compute.new(self.aws_credentials.merge({ :provider => 'AWS' }))
-      end
-
-      def self.elb
-        @@elb ||= Fog::AWS::ELB.new(self.aws_credentials)
-      end
-
-      def self.iam
-        credentials = self.aws_credentials
-        credentials.delete(:region)
-        @@iam ||= Fog::AWS::IAM.new(credentials)
       end
 
       def self.aws_account_id()
@@ -52,9 +42,10 @@ module Ironfan
 
       def self.aws_credentials
         return {
-          :aws_access_key_id     => Chef::Config[:knife][:aws_access_key_id],
-          :aws_secret_access_key => Chef::Config[:knife][:aws_secret_access_key],
+          :aws_access_key_id     => Chef::Config[:knife][:euca_access_key_id],
+          :aws_secret_access_key => Chef::Config[:knife][:euca_secret_access_key],
           :region                => Chef::Config[:knife][:region]
+          :endpoint              => Chef::Config[:knife][:euca_api_endpoint]
         }
       end
 
