@@ -1,3 +1,9 @@
+# Iron-fan Eucalyptus
+
+This branch provides Ironfan's compatibility with eucalyptus/OpenStack's EC2 API. Ironfan is built for AWS and uses advanced features like ELB and IAM which aren't supported in eucalyptus/OpenStack making it hard to be used for them.
+ 
+Due to the unavailibility of Ironfan's support for OpenStack I hacked their EC2 API support to make it work. Its nothing but a sliced down version of Ironfan.
+
 # Ironfan Core: Knife Tools and Core Models
 
 Ironfan, the foundation of The Infochimps Platform, is an expressive toolset for constructing scalable, resilient architectures. It works in the cloud, in the data center, and on your laptop, and it makes your system diagram visible and inevitable. Inevitable systems coordinate automatically to interconnect, removing the hassle of manual configuration of connection points (and the associated danger of human error).
